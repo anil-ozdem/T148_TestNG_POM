@@ -1,6 +1,7 @@
 package tests.day13_testNGFramework;
 
 import org.testng.Assert;
+import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import utilities.Driver;
 
@@ -17,6 +18,14 @@ public class C04_Priority {
 
         1- biz test method'larina priority tanimlarsak
            priority degerlerini kucukten buyuge dogru calistirir
+
+        2- bazi method'lara priority atayip, bazilarina atama yapmasak
+           atama yapilmayan method'larin priority degeri
+           default deger olan '0' olur ve buna uygun sirada calisir
+
+        3- ayni priority degerine sahip birden fazla method olursa
+           esit priority degeri olanlar kendi iclerinde alfabetik siraya uyarlar
+
      */
 
     @Test(priority = 1)
@@ -32,7 +41,7 @@ public class C04_Priority {
 
     }
 
-    @Test(priority = 2)
+    @Test // priority == 0
     public void wisequarterTest() {
 
         Driver.getDriver().get("https://www.wisequarter.com");
@@ -46,7 +55,7 @@ public class C04_Priority {
 
     }
 
-    @Test(priority = 3)
+    @Test // priority == 0
     public void bestbuy() {
 
         Driver.getDriver().get("https://www.bestbuy.com");
