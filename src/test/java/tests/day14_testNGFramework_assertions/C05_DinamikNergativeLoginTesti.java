@@ -5,9 +5,10 @@ import org.testng.annotations.Test;
 import pages.TestotomasyonuPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
 public class C05_DinamikNergativeLoginTesti {
-    TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
+    static TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
 
     //1- https://www.testotomasyonu.com/ anasayfasina gidin
     //2- account linkine basin
@@ -20,7 +21,7 @@ public class C05_DinamikNergativeLoginTesti {
 
     @Test
     public void gecerliEmailTesti(){
-
+        testotomasyonuPage = new TestotomasyonuPage();
         //1- https://www.testotomasyonu.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
@@ -41,6 +42,7 @@ public class C05_DinamikNergativeLoginTesti {
     }
     @Test
     public void gecersizEmailTesti(){
+        testotomasyonuPage = new TestotomasyonuPage();
         //1- https://www.testotomasyonu.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
@@ -60,7 +62,7 @@ public class C05_DinamikNergativeLoginTesti {
     }
     @Test
     public void gecerliEmailvePasswordTesti(){
-
+        testotomasyonuPage = new TestotomasyonuPage();
         //1- https://www.testotomasyonu.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
@@ -76,6 +78,8 @@ public class C05_DinamikNergativeLoginTesti {
 
         //5- Basarili olarak giris yapilamadigini test edin
         Assert.assertTrue(testotomasyonuPage.loginButonu.isDisplayed());
+
+        Driver.quitDriver();
 
     }
 }
