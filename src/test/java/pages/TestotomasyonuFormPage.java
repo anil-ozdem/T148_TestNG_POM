@@ -20,5 +20,17 @@ public class TestotomasyonuFormPage {
     @FindBy(xpath = "(//select[@class='form-control'])[3]")
     public WebElement yilDdm;
 
+    @FindBy(xpath = "//input[@id='gridCheck5']")
+    public WebElement sirtAgrisiCheckBox;
+
+    @FindBy(xpath = "//input[@id='gridCheck4']")
+    public WebElement carpintiCheckBox;
+
+    @FindBy(xpath = "//input[@id='hastalikCheck2']")
+    public WebElement sekerCheckBox;
+
+    @FindBy(xpath = "//input[@id='hastalikCheck7']")
+    public WebElement epilepsiCheckBox;
+
 
 }
