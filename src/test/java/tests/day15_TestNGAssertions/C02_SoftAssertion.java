@@ -3,23 +3,27 @@ package tests.day15_TestNGAssertions;
 import org.openqa.selenium.Keys;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 import pages.TestotomasyonuPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class C01_CokluAssertion {
+public class C02_SoftAssertion {
 
     @Test
-    public void ilkUrunIsimTesti(){
+    public void softAssertionTesti(){
 
         // 1- testotomasyonu anasayfaya gidip
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
         // url'in testotomasyonu icerdigini test edin
-        String expectedUrlIcerik = "testotomasyonu";
+
+        String expectedUrlIcerik = "testotomasyonu1";
         String actualUrl = Driver.getDriver().getCurrentUrl();
 
-        Assert.assertTrue(actualUrl.contains(expectedUrlIcerik));
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(actualUrl.contains(expectedUrlIcerik), "url istenen kelimeyi icermiyor");
 
         // 2- phone icin arama yapip
 
@@ -31,23 +35,23 @@ public class C01_CokluAssertion {
         String actualSonuc = testotomasyonuPage.aramaSonucElementi.getText();
         String unExpectedSonuc = ConfigReader.getProperty("toUnexpectedSonuc");
 
-
-        Assert.assertNotEquals(actualSonuc,unExpectedSonuc);
+        softAssert.assertNotEquals(actualSonuc,actualSonuc, "urun bulunamadi");
 
         // 3- ilk urunu tiklayip,
         testotomasyonuPage.ilkUrunElementi.click();
 
         // urun isminde case sensitive olmadan "phone" bulundugunu test edin
 
-        String expectedIsimIcerik = ConfigReader.getProperty("toAranacakKelime");
+        String expectedIsimIcerik = ConfigReader.getProperty("toAranacakKelime")+"1";
         String actualUrunIsmi = testotomasyonuPage.ilkUrunSayfasindakiIsimElementi
-                                .getText()
-                                .toLowerCase();
+                                                    .getText()
+                                                    .toLowerCase();
 
-        Assert.assertTrue(actualUrunIsmi.contains(expectedIsimIcerik));
+        softAssert.assertTrue(actualUrunIsmi.contains(expectedIsimIcerik),"urun isminde istenen icerik yok");
 
+
+        softAssert.assertAll(); // bu satir yazilmazsa, softAssert durumu raporlamaz
+                                // testler PASSED olarak kabul edilir
         Driver.quitDriver();
-
-
     }
 }
