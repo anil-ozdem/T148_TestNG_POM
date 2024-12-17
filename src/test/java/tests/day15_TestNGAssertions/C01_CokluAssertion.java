@@ -28,7 +28,7 @@ public class C01_CokluAssertion {
                 .sendKeys(ConfigReader.getProperty("toAranacakKelime") + Keys.ENTER);
 
         // urun bulunabildigini test edin
-        String actualSonuc = testotomasyonuPage.aramaSonucElementi.getText();
+        String actualSonuc = testotomasyonuPage.aramaSonucuElementi.getText();
         String unExpectedSonuc = ConfigReader.getProperty("toUnexpectedSonuc");
 
 

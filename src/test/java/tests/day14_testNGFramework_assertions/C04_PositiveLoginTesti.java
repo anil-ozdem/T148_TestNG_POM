@@ -8,9 +8,8 @@ import utilities.Driver;
 import utilities.ReusableMethods;
 
 public class C04_PositiveLoginTesti {
-    TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
 
-    @Test
+    @Test(groups = {"smoke", "regression", "E2E"})
     public void positiveLoginTesti() {
         /*
             Testlerimizi DINAMIK yapmak
@@ -27,14 +26,17 @@ public class C04_PositiveLoginTesti {
 
             Bu uzun islemi bizim adimiza yapip
             verdigimiz "toUrl", "toGecerliEmail" gibi key'lerin
-            karisindaki value'leri alip bize getirecekhazir bir method olusturalim
+            karsisindaki value'leri alip bize getirecek hazir bir method olusturalim
          */
 
-        //1- https://www.testotomasyonu.com/ anasayfasina gidin
+        // 1- https://www.testotomasyonu.com/ anasayfasina gidin
         Driver.getDriver().get("https://www.testotomasyonu.com/");
 
-        //2- account linkine basin
-        testotomasyonuPage.accountLinki.click();
+        // 2- account linkine basin
+
+        TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
+        testotomasyonuPage.accountLinki
+                .click();
 
         // 3- Kullanici email'i olarak gecerli email girin
         testotomasyonuPage.emailKutusu.sendKeys("wise@gmail.com");
@@ -43,43 +45,51 @@ public class C04_PositiveLoginTesti {
         testotomasyonuPage.passwordKutusu.sendKeys("12345");
 
         // 5- Login butonuna basarak login olun
-        testotomasyonuPage.loginButonu.click();
+        testotomasyonuPage.loginButonu
+                .click();
 
         // 6- Basarili olarak giris yapilabildigini test edin
+
         Assert.assertTrue(testotomasyonuPage.logoutButonu.isDisplayed());
 
+
         // logout olun
-        testotomasyonuPage.logoutButonu.click();
 
-
+        testotomasyonuPage.logoutButonu
+                .click();
     }
 
 
-    @Test
-    public void dinamikPositiveLoginTesti(){
-        //1- https://www.testotomasyonu.com/ anasayfasina gidin
+    @Test(groups = {"smoke", "regression"})
+    public void dinamikPositiveLoginTesti() {
+
+        // 1- https://www.testotomasyonu.com/ anasayfasina gidin
         Driver.getDriver().get(ConfigReader.getProperty("toUrl"));
 
-        //2- account linkine basin
-        testotomasyonuPage.accountLinki.click();
+        ReusableMethods.bekle(1);
+        // 2- account linkine basin
+        TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
+        testotomasyonuPage.accountLinki
+                .click();
 
         // 3- Kullanici email'i olarak gecerli email girin
         testotomasyonuPage.emailKutusu.sendKeys(ConfigReader.getProperty("toGecerliEmail"));
 
         // 4- Kullanici sifresi olarak gecerli password girin
         testotomasyonuPage.passwordKutusu.sendKeys(ConfigReader.getProperty("toGecerliPassword"));
-
+        ReusableMethods.bekle(1);
         // 5- Login butonuna basarak login olun
-        testotomasyonuPage.loginButonu.click();
+        testotomasyonuPage.loginButonu
+                .click();
 
         // 6- Basarili olarak giris yapilabildigini test edin
         Assert.assertTrue(testotomasyonuPage.logoutButonu.isDisplayed());
 
+        ReusableMethods.bekle(1);
         // logout olun
-        testotomasyonuPage.logoutButonu.click();
-
-
-        ReusableMethods.bekle(3);
+        testotomasyonuPage.logoutButonu
+                .click();
         Driver.quitDriver();
+
     }
 }

@@ -8,7 +8,7 @@ import utilities.ReusableMethods;
 public class C06_SingletonPattern {
 
     @Test
-    public void test01(){
+    public void test01() {
 
         /*
             Page Object Model'i dizayn edenler
@@ -35,6 +35,6 @@ public class C06_SingletonPattern {
 
 
         ReusableMethods.bekle(3);
-        Driver.quitDriver();
+        //Driver.quitDriver();
     }
 }
