@@ -32,6 +32,7 @@ public class C06_PageClassKullanimi {
     @Test(dependsOnMethods = "anasayfaTesti", groups = {"smoke", "regression"})
     public void phoneAramaTesti() {
         // 2- phone icin arama yapip
+        TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
 
         testotomasyonuPage.aramaKutusu.sendKeys("phone" + Keys.ENTER);
 
@@ -46,6 +47,8 @@ public class C06_PageClassKullanimi {
 
     @Test(dependsOnMethods = "phoneAramaTesti", groups = {"smoke", "E2E"})
     public void ilkUrunIsimTesti() {
+        TestotomasyonuPage testotomasyonuPage = new TestotomasyonuPage();
+
         // 3- ilk urunu tiklayip,
         testotomasyonuPage.ilkUrunElementi
                 .click();
