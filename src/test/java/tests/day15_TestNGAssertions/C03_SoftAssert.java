@@ -81,7 +81,6 @@ public class C03_SoftAssert {
         //16. Dropdown menude "Canada (dollar)" bulunduğunu dogrulayin
 
         List<String> optionYazilariList = ReusableMethods.stringListeyeDonustur(dropdownElementleriList);
-
         String expectedOption = "Canada (dollar)";
 
         softAssert.assertTrue(optionYazilariList.contains(expectedOption), "dropdown Canada dolari icermiyor");
