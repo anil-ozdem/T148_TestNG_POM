@@ -1,4 +1,4 @@
-package tests.day17_crossBrowserCalistirilacakTestler;
+package tests.day17_CrossBrowserCalistirilacakTestler;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -14,7 +14,7 @@ import java.time.Duration;
 public class C03_UrunAramaTesti extends TestBaseCross {
 
     @Test
-    public void test01(){
+    public void test01() {
 
 
         driver.get("https://www.testotomasyonu.com");
@@ -30,14 +30,7 @@ public class C03_UrunAramaTesti extends TestBaseCross {
         String unExpectedSonuc = "0 Products Found";
         String actualSonuc = aramaSonucuElementi.getText();
 
-        Assert.assertNotEquals(actualSonuc,unExpectedSonuc);
-        /*
-            JUnit Assertions ile 2 kucuk fark var
-            1- Class ismi Assertions degil Assert
-            2- JUnit'de once expected, sonra actual yaziliyordu
-               TestNG'de once actual, sonra expected yaziliyor
-         */
-
+        Assert.assertNotEquals(actualSonuc, unExpectedSonuc);
 
     }
 

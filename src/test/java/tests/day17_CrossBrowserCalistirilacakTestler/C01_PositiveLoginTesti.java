@@ -1,4 +1,4 @@
-package tests.day17_crossBrowserCalistirilacakTestler;
+package tests.day17_CrossBrowserCalistirilacakTestler;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
